@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+}
+#table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 30%;
+    float: left;
+    margin-left: 3%;
+    margin-top: 3%;
+    
+  }
+
+.header{
+    background-color: #2861ca;
+    color: #dddddd;
+    text-align: center;
+}
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    min-width: 20px;
+    height: 20px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    #table {
+        width: 96%; 
+      }
+  }
+  
