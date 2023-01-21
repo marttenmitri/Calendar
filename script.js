@@ -1,14 +1,16 @@
 let today = new Date();
 let currentQuarter;
+let numberOfTasks = document.getElementsByClassName("task").length - 1;
 GetDate(today);
-console.log(getMondays(today));
+taskRange()
+
 document.addEventListener("click", elementId);
-console.log(currentQuarter)
 
 function elementId() {
+
     let finalValue;
     let monthValue;
-    
+
     let clickedId = event.srcElement.id;
     let clickedValues = Array.from(clickedId);
 
@@ -31,7 +33,7 @@ function elementId() {
     } else {
         monthValue = quarter4[selectedMonth] + 1;
     }
-    //let lastClicked;
+
     if (clickedId == "next") {
         today.setMonth(today.getMonth() + 3);
         GetDate(today);
@@ -39,13 +41,9 @@ function elementId() {
         today.setMonth(today.getMonth() - 3);
         GetDate(today)
     } else if (clickedId >= 111 && clickedId < + 375) {
-        //lastClicked = clickedId;
-        //console.log(lastClicked);
         today.setMonth(monthValue - 1);
-        //document.getElementById(clickedId).style.backgroundColor = "blue";
-        
-    }
-    else {
+
+    } else {
         GetDate(today);
     }
 
@@ -61,19 +59,125 @@ function elementId() {
         let newDay = parseInt(selectedDay) - parseInt(lastDayOfMonth)
         let newMonth = monthValue + 1;
         finalValue = newDay + "/" + newMonth + "/" + currentYear;
-    } else if(selectedDay <= lastDayOfMonth) {
+    } else if (selectedDay <= lastDayOfMonth) {
         finalValue = selectedDay + "/" + monthValue + "/" + currentYear;
-    }else{
+    } else {
         finalValue = "";
     }
-    
 
-    console.log(clickedId);
     document.getElementById("value").innerHTML = finalValue;
 
 }
 
+function taskRange() {
 
+    let quarter1 = [0, 1, 2];
+    let quarter2 = [3, 4, 5];
+    let quarter3 = [6, 7, 8];
+    let quarter4 = [9, 10, 11];
+
+    for (i = 1; i <= numberOfTasks; i++) {
+
+        let taskNumber = document.getElementsByClassName("task" + i);
+
+        let startDate = taskNumber[1].textContent;
+        let endtDate = taskNumber[2].textContent;
+
+        let startArray = startDate.split(".");
+        let endArray = endtDate.split(".");
+
+        let startmonth = parseInt(startArray[1]) - 1
+        let endmonth = parseInt(endArray[1]) - 1
+
+        let startDay = parseInt(startArray[0])
+        let endDay = parseInt(endArray[0])
+
+        //let description = taskNumber[3];
+
+        for (q = 1; q <= 4; q++) {
+
+            if (getQuarter() == q) {
+
+                let qq = "quarter" + q;
+                let month1;
+                let month2;
+
+                let tableNumber1;
+                let tableNumber2;
+
+                if (qq == "quarter1") {
+                    month1 = quarter1[startmonth] + 1;
+                    month2 = quarter1[endmonth] + 1;
+
+                    tableNumber1 = month1;
+                    tableNumber2 = month2;
+                } else if (qq == "quarter2") {
+                    month1 = quarter2[startmonth] + 1;
+                    month2 = quarter2[endmonth] + 1;
+
+                    tableNumber1 = month1 - 3;
+                    tableNumber2 = month2 - 3;
+
+                } else if (qq == "quarter3") {
+                    month1 = quarter3[startmonth] + 1;
+                    month2 = quarter3[endmonth] + 1;
+
+                    tableNumber1 = month1 - 6;
+                    tableNumber2 = month2 - 6;
+
+                } else if (qq == "quarter4") {
+                    month1 = quarter4[startmonth] + 1;
+                    month2 = quarter4[endmonth] + 1;
+
+                    tableNumber1 = month1 - 9;
+                    tableNumber2 = month2 - 9;
+                } else {
+                    month1 = 1;
+                    month2 = 1;
+
+                    tableNumber1 = 1;
+                    tableNumber2 = 1;
+                }
+
+                //Start date
+                let selectedMondays1 = getMondays("2023, " + month1)
+                let selectedColumn1;
+
+                for (l = 0; l <= selectedMondays1.length; l++) {
+                    if (startDay >= selectedMondays1[l] && startDay < selectedMondays1[l + 1]) {
+                        selectedColumn1 = l + 1;
+                    }
+                }
+
+                //end date
+                let selectedMondays2 = getMondays("2023, " + month2)
+                let selectedColumn2;
+
+                for (e = 0; e <= selectedMondays2.length; e++) {
+                    if (endDay >= selectedMondays2[e] && endDay < selectedMondays2[e + 1]) {
+                        selectedColumn2 = e + 1;
+                    }
+                }
+
+                let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                document.getElementById(tableNumber1.toString() + i + selectedColumn1).style.backgroundColor = "#" + randomColor;
+
+                document.getElementsByClassName
+
+                document.getElementById(tableNumber2.toString() + i + selectedColumn2).style.backgroundColor = "#" + randomColor;
+
+            }
+        }
+
+    }
+}
+
+function addNew() {
+    console.log(document.getElementsByClassName("task")[2].setAttribute("hidden", false))
+    document.getElementsByClassName("task")[2].removeAttribute("hidden");
+    numberOfTasks = numberOfTasks + 1
+    taskRange()
+}
 
 function getQuarter() {
 
@@ -92,6 +196,7 @@ function getQuarter() {
     } else if (quarter4.includes(currentMonth)) {
         currentQuarter = 4;
     }
+    document.getElementById("qvalue").innerHTML = "Quarter " + currentQuarter;
 
     return currentQuarter;
 }
@@ -101,7 +206,6 @@ function GetDate(date) {
 
     let currentDate = new Date(date);
     let currentYear = currentDate.getFullYear();
-
 
     if (getQuarter() == 2) {
 
@@ -113,7 +217,6 @@ function GetDate(date) {
 
         document.getElementById("header3").innerHTML = months[5];
         getElements(3, months[5] + ', ' + currentYear);
-
 
     } else if (getQuarter() == 3) {
 

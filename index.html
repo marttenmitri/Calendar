@@ -3,16 +3,22 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
-    
+
     <title>Proovitoo</title>
 </head>
 
 <body>
+    <div id="buttons">
+        <button type="button" id="last">Last</button>
+        <h1 id="qvalue"></h1>
+        <button type="button" id="next">Next</button>
+    </div>
+
 
     <table class="first-table" id="table">
 
         <tr>
-            <th  class="header" id="header1"></th>
+            <th class="header" id="header1"></th>
         </tr>
 
         <tr id="first-days1">
@@ -65,14 +71,14 @@
             <td class="last1" id="175"></td>
         </tr>
 
-        
+
 
     </table>
 
     <table class="second-table" id="table">
 
         <tr>
-            <th  class="header" id="header2" ></th>
+            <th class="header" id="header2"></th>
         </tr>
 
         <tr id="first-days2">
@@ -80,7 +86,7 @@
             <td id="212"></td>
             <td id="213"></td>
             <td id="214"></td>
-            <td class="last2" id="215"></td>></td>
+            <td class="last2" id="215"></td>
         </tr>
         <tr id="second-days2">
             <td id="221"></td>
@@ -125,14 +131,14 @@
             <td class="last2" id="275"></td>
         </tr>
 
-        
+
 
     </table>
 
     <table class="third-table" id="table">
 
         <tr>
-            <th  class="header" id="header3"></th>
+            <th class="header" id="header3"></th>
         </tr>
 
         <tr id="first-days3">
@@ -185,12 +191,51 @@
             <td class="last3" id="375"></td>
         </tr>
 
-        
+
 
     </table>
+
+    <table id="table">
+        <tr>
+            <th class="header" colspan="4">Tasks</th>
+        </tr>
+
+        <tr id="info">
+            <td>Task Name</td>
+            <td>Start Date</td>
+            <td>End Date</td>
+            <td>Description</td>
+        </tr>
+        <tr class="task" id="1">
+            <td class="task1" id="1">Task 1</td>
+            <td class="task1" id="1">06.02.2023</td>
+            <td class="task1" id="1">13.03.2023</td>
+            <td class="task1" id="1">Descriptio</td>
+        </tr>
+
+        <tr class="task">
+            <td class="task2" id="2">Task 2</td>
+            <td class="task2" id="2">02.01.2023</td>
+            <td class="task2" id="2">09.01.2023</td>
+            <td class="task2" id="2">Descriptio</td>
+        </tr>
+
+        <tr class="task" hidden>
+            <td class="task3" id="3">Task 3</td>
+            <td class="task3" id="3">12.01.2023</td>
+            <td class="task3" id="3">09.02.2023</td>
+            <td class="task3" id="3">Descriptio</td>
+        </tr>
+        <tr>
+            <th class="new" colspan="4" onclick="addNew()">Add New</th>
+        </tr>
+
+    </table>
+
     <script src="script.js"></script>
-</body>
-    <button type="button" id="last">Last</button>
-    <button type="button" id="next">Next</button>
     <h1 id="value"></h1>
+</body>
+
+
+
 </html>
