@@ -10,6 +10,7 @@ body {
   margin-left: 3%;
   margin-top: 3%;
   float: left;
+
 }
 
 .header {
@@ -32,7 +33,7 @@ body {
 }
 
 #info {
-  background-color: #b7bbc2;
+  background-color: #e7e7e7;
 }
 
 #buttons {
@@ -40,7 +41,8 @@ body {
   height: 10%;
   display: flex;
 }
-.button{
+
+.button {
   width: 15%;
   height: 40px;
   margin-top: 1%;
@@ -49,6 +51,7 @@ body {
   border: 0;
   background-color: #9bb8ee;
 }
+
 #last {
   float: left;
   margin-left: 1%;
@@ -69,14 +72,14 @@ body {
   text-align: center;
 }
 
-#value{
+#value {
   text-align: center;
 }
 
 td,th {
   border: 1px solid #dddddd;
   text-align: center;
-  padding:8px;
+  padding: 8px;
   min-width: 20px;
   height: 20px;
   cursor: pointer;
@@ -88,6 +91,7 @@ td,th {
     width: 96%;
     margin-left: 2%;
   }
+
   td,th {
     border: 1px solid #dddddd;
     text-align: left;
@@ -96,25 +100,30 @@ td,th {
     height: 40px;
     cursor: pointer;
   }
+
   #next {
     width: 20%;
     height: 80px;
     font-size: 30px;
   }
+
   #last {
     width: 20%;
     height: 80px;
     font-size: 30px;
   }
+
   #qvalue {
     width: 60%;
     height: 100%;
     font-size: 50px;
   }
-  .header{
+
+  .header {
     font-size: 25px;
   }
-  .tasks{
+
+  .tasks {
     margin-bottom: 10%;
     font-size: 25px;
   }
