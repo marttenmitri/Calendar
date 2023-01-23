@@ -40,27 +40,27 @@ body {
   height: 10%;
   display: flex;
 }
-
-#last {
-  float: left;
+.button{
   width: 15%;
   height: 40px;
-  margin-left: 1%;
   margin-top: 1%;
   cursor: pointer;
+  border-radius: 10px;
+  border: 0;
+  background-color: #9bb8ee;
+}
+#last {
+  float: left;
+  margin-left: 1%;
+
 }
 
 #next {
   float: right;
-  width: 15%;
-  height: 40px;
   margin-right: 1%;
-  margin-top: 1%;
-  cursor: pointer;
 }
 
 #qvalue {
-
   width: 70%;
   height: 100%;
   padding: 0;
@@ -70,24 +70,52 @@ body {
 }
 
 #value{
-  position: absolute;
-  bottom: 0;
   text-align: center;
-  width: 100%;
 }
 
-td,
-th {
+td,th {
   border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+  text-align: center;
+  padding:8px;
   min-width: 20px;
   height: 20px;
   cursor: pointer;
+
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
   #table {
     width: 96%;
+    margin-left: 2%;
+  }
+  td,th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    min-width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  #next {
+    width: 20%;
+    height: 80px;
+    font-size: 30px;
+  }
+  #last {
+    width: 20%;
+    height: 80px;
+    font-size: 30px;
+  }
+  #qvalue {
+    width: 60%;
+    height: 100%;
+    font-size: 50px;
+  }
+  .header{
+    font-size: 25px;
+  }
+  .tasks{
+    margin-bottom: 10%;
+    font-size: 25px;
   }
 }

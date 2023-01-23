@@ -2,8 +2,7 @@ let today = new Date();
 let currentQuarter;
 let numberOfTasks = document.getElementsByClassName("task").length - 1;
 GetDate(today);
-taskRange()
-
+taskRange();
 document.addEventListener("click", elementId);
 
 function elementId() {
@@ -37,9 +36,11 @@ function elementId() {
     if (clickedId == "next") {
         today.setMonth(today.getMonth() + 3);
         GetDate(today);
+        clearTables();
     } else if (clickedId == "last") {
         today.setMonth(today.getMonth() - 3);
-        GetDate(today)
+        GetDate(today);
+        clearTables();
     } else if (clickedId >= 111 && clickedId < + 375) {
         today.setMonth(monthValue - 1);
 
@@ -56,7 +57,7 @@ function elementId() {
     let selectedDay = parseInt(mon[column - 1]) + parseInt(row) - 1;
 
     if (selectedDay > lastDayOfMonth) {
-        let newDay = parseInt(selectedDay) - parseInt(lastDayOfMonth)
+        let newDay = parseInt(selectedDay) - parseInt(lastDayOfMonth);
         let newMonth = monthValue + 1;
         finalValue = newDay + "/" + newMonth + "/" + currentYear;
     } else if (selectedDay <= lastDayOfMonth) {
@@ -91,7 +92,6 @@ function taskRange() {
 
         let startDay = parseInt(startArray[0])
         let endDay = parseInt(endArray[0])
-
         //let description = taskNumber[3];
 
         for (q = 1; q <= 4; q++) {
@@ -111,6 +111,7 @@ function taskRange() {
 
                     tableNumber1 = month1;
                     tableNumber2 = month2;
+
                 } else if (qq == "quarter2") {
                     month1 = quarter2[startmonth] + 1;
                     month2 = quarter2[endmonth] + 1;
@@ -131,6 +132,7 @@ function taskRange() {
 
                     tableNumber1 = month1 - 9;
                     tableNumber2 = month2 - 9;
+
                 } else {
                     month1 = 1;
                     month2 = 1;
@@ -140,7 +142,7 @@ function taskRange() {
                 }
 
                 //Start date
-                let selectedMondays1 = getMondays("2023, " + month1)
+                let selectedMondays1 = getMondays("2023, " + month1);
                 let selectedColumn1;
 
                 for (l = 0; l <= selectedMondays1.length; l++) {
@@ -159,12 +161,11 @@ function taskRange() {
                     }
                 }
 
-                let randomColor = Math.floor(Math.random() * 16777215).toString(16);
-                document.getElementById(tableNumber1.toString() + i + selectedColumn1).style.backgroundColor = "#" + randomColor;
-
-                document.getElementsByClassName
-
-                document.getElementById(tableNumber2.toString() + i + selectedColumn2).style.backgroundColor = "#" + randomColor;
+                let randomColor = "#" + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+                document.getElementById(tableNumber1.toString() + i + selectedColumn1).style.backgroundColor = randomColor;
+                document.getElementById(tableNumber1.toString() + i + selectedColumn1).innerHTML = "Start";
+                document.getElementById(tableNumber2.toString() + i + selectedColumn2).style.backgroundColor = randomColor;
+                document.getElementById(tableNumber2.toString() + i + selectedColumn2).innerHTML = "End";
 
             }
         }
@@ -173,10 +174,9 @@ function taskRange() {
 }
 
 function addNew() {
-    console.log(document.getElementsByClassName("task")[2].setAttribute("hidden", false))
     document.getElementsByClassName("task")[2].removeAttribute("hidden");
-    numberOfTasks = numberOfTasks + 1
-    taskRange()
+    numberOfTasks = numberOfTasks + 1;
+    taskRange();
 }
 
 function getQuarter() {
@@ -199,6 +199,17 @@ function getQuarter() {
     document.getElementById("qvalue").innerHTML = "Quarter " + currentQuarter;
 
     return currentQuarter;
+}
+
+function clearTables() {
+    for (x = 111; x <= 375; x++) {
+        let checkElement = document.getElementById(x);
+
+        if (checkElement) {
+            document.getElementById(x).style.backgroundColor = "white";
+            document.getElementById(x).innerHTML = "";
+        }
+    }
 }
 
 function GetDate(date) {
